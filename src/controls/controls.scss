@@ -1,0 +1,129 @@
+$color__fill: #333;
+$color__default: rgba(0, 0, 0, 0.2);
+$color__hover: rgba(0, 0, 0, 0.3);
+$color__active: rgba(0, 0, 0, 0.5);
+
+input[type="range"] {
+  position: relative;
+
+  // width: calc(100% - 150px - 50px);
+  // padding-left: 150px;
+  // padding-right: 50px;
+  // padding-right: 150px;
+
+  width: 100%;
+
+  &:before,
+  &:after {
+    padding: 0.65em 2em;
+    font-size: 1.2em;
+    font-family: monospace;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  &:before {
+    content: attr(label);
+    width: 100px;
+    text-align: right;
+  }
+
+  &:after {
+    content: attr(value);
+    width: 40px;
+  }
+}
+
+input[type="range"] {
+  box-sizing: border-box;
+  font-size: 10px;
+  line-height: 1;
+  height: 2em;
+  background-color: transparent;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  &::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  @mixin thumb {
+    width: 2em;
+    height: 2em;
+    margin-top: 0;
+    background-color: $color__fill;
+    border-radius: 1em;
+    border: 2px solid $color__default;
+    cursor: pointer;
+  }
+
+  @mixin track {
+    width: 100%;
+    cursor: pointer;
+    height: 1em;
+    border-bottom: 2px solid $color__default;
+    background-color: transparent;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    @include thumb;
+  }
+
+  &::-moz-range-thumb {
+    @include thumb;
+  }
+
+  &::-ms-thumb {
+    @include thumb;
+  }
+
+  &:hover {
+    &::-webkit-slider-thumb {
+      border-color: $color__hover;
+    }
+    &::-moz-range-thumb {
+      border-color: $color__hover;
+    }
+    &::-ms-thumb {
+      border-color: $color__hover;
+    }
+  }
+
+  &:active {
+    &::-webkit-slider-thumb {
+      border-color: $color__active;
+    }
+    &::-moz-range-thumb {
+      border-color: $color__active;
+    }
+    &::-ms-thumb {
+      border-color: $color__active;
+    }
+  }
+
+  &::-webkit-slider-runnable-track {
+    @include track;
+  }
+
+  &::-moz-range-track {
+    @include track;
+  }
+
+  &::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+}
